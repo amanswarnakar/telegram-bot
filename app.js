@@ -66,7 +66,7 @@ bot.on("message", async (msg) => {
   if (query === "/start") {
     bot.sendMessage(
       chatId,
-      "Welcome to the weather bot.\n\nYou can type a city name to get the weather details.\n\nIn addition to that, you will receive hourly weather updates of Delhi."
+      "Welcome to the weather bot.\n\nType a city name to get the weather details.\n\nIn addition to that, you will receive hourly weather updates of Delhi."
     );
   } else {
     const url =
