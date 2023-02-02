@@ -51,10 +51,13 @@ const job = schedule.scheduleJob("0 * * * *", async () => {
     })
     .catch((err) => {
       console.log(err.response.data);
-      if (err.response.data.message === "city not found" || err.response.data.cod === "404")
+      if (
+        err.response.data.message === "city not found" ||
+        err.response.data.cod === "404"
+      )
         bot.sendMessage(chatId, "City not found.");
     });
-  chatIds.map((e) => {
+  chatIds.forEach((e) => {
     bot.sendMessage(e, ret);
   });
 });
@@ -62,6 +65,7 @@ const job = schedule.scheduleJob("0 * * * *", async () => {
 bot.on("message", async (msg) => {
   const chatId = msg.chat.id;
   chatIds.add(chatId);
+  chatIds.forEach((e) => console.log(e));
   const query = msg.text;
   if (query === "/start") {
     bot.sendMessage(
@@ -104,7 +108,10 @@ bot.on("message", async (msg) => {
       })
       .catch((err) => {
         console.log(err.response.data);
-        if (err.response.data.message === "city not found" || err.response.data.cod === "404")
+        if (
+          err.response.data.message === "city not found" ||
+          err.response.data.cod === "404"
+        )
           bot.sendMessage(chatId, "City not found.");
       });
   }
