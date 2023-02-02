@@ -13,7 +13,7 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
   bot.sendMessage(chatId, resp);
 });
 
-var chatIds = [];
+const chatIds = new Set();
 
 const job = schedule.scheduleJob("0 * * * *", async () => {
   const query = "Delhi";
@@ -61,7 +61,7 @@ const job = schedule.scheduleJob("0 * * * *", async () => {
 
 bot.on("message", async (msg) => {
   const chatId = msg.chat.id;
-  chatIds.push(chatId);
+  chatIds.add(chatId);
   const query = msg.text;
   if (query === "/start") {
     bot.sendMessage(
